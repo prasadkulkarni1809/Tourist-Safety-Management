@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tourist Safety</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+<%- include('partials/navbar') %>
+
+<!-- Hero Section -->
+<section class="flex flex-col md:flex-row items-center justify-between px-10 py-20 bg-white">
+    
+    <!-- Left Content -->
+    <div class="md:w-1/2 space-y-6">
+        <h1 class="text-4xl font-bold text-gray-800">
+            AI-Powered Tourist Safety System
+        </h1>
+        <p class="text-gray-600 text-lg">
+            Real-time distress detection, GPS tracking, and secure blockchain identity verification.
+        </p>
+
+        <div class="space-x-4">
+            <a href="/login" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+                Login
+            </a>
+            <a href="/register" class="border border-blue-600 text-blue-600 px-6 py-2 rounded-lg hover:bg-blue-50">
+                Register
+            </a>
+        </div>
+    </div>
+
+    <!-- Right Image -->
+  <div class="md:w-1/2 mt-10 md:mt-0">
+    <img src="/images/home.png" 
+         alt="Safety Image" 
+         class="rounded-lg shadow-lg w-full h-auto">
+</div>
+
+</section>
+
+<!-- Features Section -->
+<section class="py-16 bg-gray-50">
+    <div class="text-center mb-10">
+        <h2 class="text-3xl font-semibold">Key Features</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 px-10">
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-xl font-bold mb-2">Panic Button Alert</h3>
+            <p>Instant distress signal to authorities.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-xl font-bold mb-2">Real-Time GPS Tracking</h3>
+            <p>Live monitoring of tourist location.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-xl font-bold mb-2">Blockchain Identity</h3>
+            <p>Secure and tamper-proof verification.</p>
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>
+
+</body>
+</html>
