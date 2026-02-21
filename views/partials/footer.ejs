@@ -1,61 +1,54 @@
-<footer class="bg-gray-900 text-gray-300 mt-20">
-    
-    <div class="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-4 gap-8">
+<footer class="bg-slate-950 border-t border-slate-800 pt-20 pb-10">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 mb-16">
 
-        <!-- Project Info -->
-        <div>
-            <h2 class="text-xl font-semibold text-white mb-4">
-                Tourist Safety
-            </h2>
-            <p class="text-sm leading-6">
-                AI-powered tourist protection system providing real-time distress alerts,
-                GPS monitoring, and secure blockchain-based identity verification.
+        <div class="space-y-6">
+            <div class="flex items-center gap-2">
+                <div class="bg-blue-600 p-1 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                </div>
+                <h2 class="text-xl font-bold text-white">SafeTravel AI</h2>
+            </div>
+            <p class="text-slate-400 text-sm leading-relaxed">
+                Empowering the global tourism industry with military-grade safety protocols and AI-driven monitoring systems.
             </p>
         </div>
 
-        <!-- Quick Links -->
         <div>
-            <h3 class="text-lg font-semibold text-white mb-4">
-                Quick Links
-            </h3>
-            <ul class="space-y-2 text-sm">
-                <li><a href="/" class="hover:text-white transition">Home</a></li>
-                <li><a href="/login" class="hover:text-white transition">Login</a></li>
-                <li><a href="/register" class="hover:text-white transition">Register</a></li>
+            <h3 class="text-sm font-bold uppercase tracking-widest text-blue-500 mb-6">Navigation</h3>
+            <ul class="space-y-4 text-slate-400 text-sm">
+                <li><a href="/" class="hover:text-white hover:translate-x-1 inline-block transition">Platform Overview</a></li>
+                <li><a href="/login" class="hover:text-white hover:translate-x-1 inline-block transition">Access Dashboard</a></li>
+                <li><a href="/register" class="hover:text-white hover:translate-x-1 inline-block transition">Register Role</a></li>
             </ul>
         </div>
 
-        <!-- Features -->
         <div>
-            <h3 class="text-lg font-semibold text-white mb-4">
-                Key Features
-            </h3>
-            <ul class="space-y-2 text-sm">
-                <li>🆘 Panic Alert System</li>
-                <li>📍 Real-Time GPS Tracking</li>
-                <li>🤖 AI Anomaly Detection</li>
-                <li>🔐 Blockchain Identity Security</li>
+            <h3 class="text-sm font-bold uppercase tracking-widest text-blue-500 mb-6">Security</h3>
+            <ul class="space-y-4 text-slate-400 text-sm">
+                <li class="flex items-center gap-2"><span>🛡️</span> SOS Protocol</li>
+                <li class="flex items-center gap-2"><span>📡</span> GPS Encryption</li>
+                <li class="flex items-center gap-2"><span>🤖</span> Anomaly Detection</li>
             </ul>
         </div>
 
-        <!-- Contact Info -->
-        <div>
-            <h3 class="text-lg font-semibold text-white mb-4">
-                Contact
-            </h3>
-            <p class="text-sm">
-                Email: support@touristsafety.com
-            </p>
-            <p class="text-sm mt-2">
-                Emergency Helpline: 112
-            </p>
+        <div class="bg-blue-600/5 border border-blue-500/20 p-6 rounded-2xl">
+            <h3 class="text-white font-bold mb-4">Need Help?</h3>
+            <p class="text-slate-400 text-sm mb-4">Our emergency response team is available 24/7.</p>
+            <div class="space-y-2">
+                <a href="mailto:support@touristsafety.com" class="text-blue-400 text-sm font-bold block">support@safetravel.ai</a>
+                <span class="text-white text-xl font-black">Call: 112</span>
+            </div>
         </div>
 
     </div>
 
-    <!-- Bottom Bar -->
-    <div class="border-t border-gray-700 text-center py-4 text-sm">
-        © <%= new Date().getFullYear() %> Tourist Safety System. All rights reserved.
+    <div class="max-w-7xl mx-auto px-6 border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-xs">
+        <p>© <%= new Date().getFullYear() %> SafeGuard AI Systems. Developed for Global Tourism Safety.</p>
+        <div class="flex gap-6">
+            <a href="#" class="hover:text-slate-300">Privacy Policy</a>
+            <a href="#" class="hover:text-slate-300">Terms of Service</a>
+        </div>
     </div>
-
 </footer>

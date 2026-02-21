@@ -1,45 +1,53 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
+const passport = require('passport');
+
 const router = express.Router();
 const User = require('../models/User');
 
 
-// GET Register Page
-router.get('/register', (req, res) => {
-    res.render('register');
-});
+// REGISTER
 
-
-// POST Register User
 router.post('/register', async (req, res) => {
-    try {
-        const { name, email, password, role } = req.body;
 
-        // Check if user already exists
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            return res.render('register', { error: 'Email already registered' });
-        }
+const { name, email, password, role } = req.body;
 
-        // Hash password
-        const hashedPassword = await bcrypt.hash(password, 10);
+const existingUser = await User.findOne({ email });
 
-        // Create new user
-        const newUser = new User({
-            name,
-            email,
-            password: hashedPassword,
-            role
-        });
+if(existingUser)
+return res.render('register', {error:'Email exists'});
 
-        await newUser.save();
+const hashedPassword = await bcrypt.hash(password,10);
 
-        res.redirect('/login');
+const newUser = new User({
 
-    } catch (error) {
-        console.log(error);
-        res.send('Something went wrong');
-    }
+name,
+email,
+password:hashedPassword,
+role
+
 });
+
+await newUser.save();
+
+res.redirect('/login');
+
+});
+
+
+// LOGIN
+
+router.post('/login',
+
+passport.authenticate('local',{
+
+successRedirect:'/',
+
+failureRedirect:'/login'
+
+})
+
+);
+
 
 module.exports = router;

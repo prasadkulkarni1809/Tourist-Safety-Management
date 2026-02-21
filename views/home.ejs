@@ -1,64 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="scroll-smooth">
 <head>
-    <title>Tourist Safety</title>
+    <meta charset="UTF-8">
+    <title>SafeTravel AI | Advanced Tourist Safety</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #020617; }
+        .hero-bg { background-image: radial-gradient(circle at top right, #1e293b 0%, #020617 60%); }
+        .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .glass-card:hover { border-color: #3b82f6; transform: translateY(-5px); }
+    </style>
 </head>
-<body class="bg-gray-100">
+<body class="text-slate-200">
 
 <%- include('partials/navbar') %>
 
-<!-- Hero Section -->
-<section class="flex flex-col md:flex-row items-center justify-between px-10 py-20 bg-white">
-    
-    <!-- Left Content -->
-    <div class="md:w-1/2 space-y-6">
-        <h1 class="text-4xl font-bold text-gray-800">
-            AI-Powered Tourist Safety System
+<section class="hero-bg min-h-screen flex flex-col md:flex-row items-center justify-between px-6 md:px-20 pt-32 pb-20">
+    <div class="md:w-1/2 space-y-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium">
+            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            </span>
+            New: AI Distress Detection 2.0
+        </div>
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight">
+            Travel Fearless with <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500">AI Intelligence.</span>
         </h1>
-        <p class="text-gray-600 text-lg">
-            Real-time distress detection, GPS tracking, and secure blockchain identity verification.
+        <p class="text-slate-400 text-lg md:text-xl max-w-lg leading-relaxed">
+            Protecting travelers worldwide with real-time distress detection, encrypted GPS monitoring, and blockchain-verified safety protocols.
         </p>
 
-        <div class="space-x-4">
-            <a href="/login" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
-                Login
+        <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/register" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-500 text-center shadow-xl shadow-blue-600/20 transition-all">
+                Create Safety ID
             </a>
-            <a href="/register" class="border border-blue-600 text-blue-600 px-6 py-2 rounded-lg hover:bg-blue-50">
-                Register
+            <a href="#features" class="bg-slate-800 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-700 text-center transition-all">
+                Explore Features
             </a>
         </div>
     </div>
 
-    <!-- Right Image -->
-  <div class="md:w-1/2 mt-10 md:mt-0">
-    <img src="/images/home.png" 
-         alt="Safety Image" 
-         class="rounded-lg shadow-lg w-full h-auto">
-</div>
-
+    <div class="md:w-1/2 mt-16 md:mt-0 relative">
+        <div class="absolute inset-0 bg-blue-500/20 blur-[100px] rounded-full"></div>
+        <img src="/images/home.png" alt="Safety Image" class="relative rounded-2xl shadow-2xl border border-white/10 w-full h-auto">
+    </div>
 </section>
 
-<!-- Features Section -->
-<section class="py-16 bg-gray-50">
-    <div class="text-center mb-10">
-        <h2 class="text-3xl font-semibold">Key Features</h2>
+<section id="features" class="py-24 px-6 md:px-20 bg-slate-950">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-blue-500 font-bold tracking-widest uppercase text-sm mb-4">Core Technology</h2>
+        <h3 class="text-4xl font-bold text-white mb-6">Unrivaled Safety Infrastructure</h3>
+        <p class="text-slate-400">Our system utilizes cutting-edge AI and decentralized tech to ensure help is always one second away.</p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8 px-10">
-        <div class="bg-white p-6 rounded-lg shadow">
-            <h3 class="text-xl font-bold mb-2">Panic Button Alert</h3>
-            <p>Instant distress signal to authorities.</p>
+    <div class="grid md:grid-cols-3 gap-8">
+        <div class="glass-card p-8 rounded-2xl">
+            <div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-6">
+                <span class="text-2xl">🆘</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">Panic Button Alert</h3>
+            <p class="text-slate-400 leading-relaxed text-sm">One-tap emergency signal that alerts the nearest police station and embassy instantly.</p>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow">
-            <h3 class="text-xl font-bold mb-2">Real-Time GPS Tracking</h3>
-            <p>Live monitoring of tourist location.</p>
+        <div class="glass-card p-8 rounded-2xl">
+            <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-6">
+                <span class="text-2xl">📍</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">Real-Time Tracking</h3>
+            <p class="text-slate-400 leading-relaxed text-sm">End-to-end encrypted GPS monitoring allowed for designated authorities during transit.</p>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow">
-            <h3 class="text-xl font-bold mb-2">Blockchain Identity</h3>
-            <p>Secure and tamper-proof verification.</p>
+        <div class="glass-card p-8 rounded-2xl border-blue-500/30">
+            <div class="w-12 h-12 bg-indigo-500/20 rounded-lg flex items-center justify-center mb-6">
+                <span class="text-2xl">🔐</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">Blockchain Identity</h3>
+            <p class="text-slate-400 leading-relaxed text-sm">Decentralized verification ensures your travel documents are secure and tamper-proof.</p>
         </div>
     </div>
 </section>
