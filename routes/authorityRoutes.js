@@ -1,24 +1,19 @@
 const express = require('express');
-
 const router = express.Router();
 
+const isAuthenticated = require('../middlewares/isAuthenticated');
+const checkRole = require('../middlewares/checkrole'); // ⚠️ Case-sensitive!
 
-// Authority Dashboard route
-router.get('/dashboard', (req, res) => {
-
-    // if not logged in
-    if (!req.user) {
-        return res.redirect('/authority/login');
-    }
-
-    // send authority to EJS
-    res.render('authorityDashboard', {
-
-        user: req.user
-
+// 🔐 Protected Authority Dashboard
+router.get(
+  '/dashboard',
+  isAuthenticated,
+  checkRole('authority'),
+  (req, res) => {
+    res.render('authority/dashboard', {
+      user: req.user
     });
-
-});
-
+  }
+);
 
 module.exports = router;

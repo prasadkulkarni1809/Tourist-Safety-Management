@@ -1,23 +1,19 @@
 const express = require('express');
-
 const router = express.Router();
 
+const isAuthenticated = require('../middlewares/isAuthenticated');
+const checkRole = require('../middlewares/checkrole');
 
-router.get('/dashboard', (req, res) => {
-
-    // if not logged in
-    if (!req.user) {
-        return res.redirect('/login');
-    }
-
-    // send user to EJS
+// 🔥 PROTECTED DASHBOARD
+router.get(
+  '/dashboard',
+  isAuthenticated,
+  checkRole('tourist'),
+  (req, res) => {
     res.render('touristDashboard', {
-
-        user: req.user
-
+      user: req.user
     });
-
-});
-
+  }
+);
 
 module.exports = router;
