@@ -1,15 +1,23 @@
+// ------------------ Import Packages ------------------
+
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 
-// Passport & Session
 const session = require('express-session');
 const passport = require('./config/passport');
 
-// Routes
-const authRoutes = require('./routes/authRoutes');
+
+// ------------------ Create Express App ------------------
 
 const app = express();
+
+
+// ------------------ Import Routes ------------------
+
+const authRoutes = require('./routes/authRoutes');
+const policeRoutes = require('./routes/policeRoutes');
+const touristRoutes = require('./routes/touristRoutes');
 
 
 // ------------------ MongoDB Connection ------------------
@@ -50,8 +58,12 @@ app.use(passport.session());
 
 app.use('/', authRoutes);
 
+app.use('/police', policeRoutes);
 
-// Page Routes
+app.use('/tourist', touristRoutes);
+
+
+// ------------------ Page Routes ------------------
 
 app.get('/', (req, res) => {
     res.render('home');
