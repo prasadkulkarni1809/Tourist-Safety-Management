@@ -18,6 +18,8 @@ const app = express();
 const authRoutes = require('./routes/authRoutes');
 const policeRoutes = require('./routes/policeRoutes');
 const touristRoutes = require('./routes/touristRoutes');
+const authorityRoutes = require('./routes/authorityRoutes');
+
 
 
 // ------------------ MongoDB Connection ------------------
@@ -61,6 +63,8 @@ app.use('/', authRoutes);
 app.use('/police', policeRoutes);
 
 app.use('/tourist', touristRoutes);
+
+app.use('/authority', authorityRoutes);
 
 
 // ------------------ Page Routes ------------------

@@ -14,4 +14,15 @@ user: req.user
 });
 
 
+router.get('/dashboard', (req, res) => {
+
+res.render('policeDashboard', {
+
+user: req.user
+
+});
+
+});
+
+
 module.exports = router;
