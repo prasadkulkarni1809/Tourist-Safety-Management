@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <title>Tourist Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 transition duration-300">
+
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed md:static z-40 bg-gradient-to-b from-blue-950 to-blue-900 dark:from-gray-800 dark:to-gray-900 text-white w-64 min-h-screen transform -translate-x-full md:translate-x-0 transition duration-300">
+      <div class="p-6 text-2xl font-semibold border-b border-blue-800 dark:border-gray-700">
+        Tourist Safety
+      </div>
+      <nav class="mt-6 space-y-2 px-4 text-sm">
+        <a href="/tourist/dashboard" class="block py-3 px-4 rounded-xl bg-blue-800 dark:bg-gray-700 shadow-lg">Dashboard</a>
+        <a href="/tourist/report" class="block py-3 px-4 rounded-xl hover:bg-blue-800 dark:hover:bg-gray-700 transition">Report Incident</a>
+        <a href="/tourist/my-reports" class="block py-3 px-4 rounded-xl hover:bg-blue-800 dark:hover:bg-gray-700 transition">My Reports</a>
+        <a href="/tourist/safe-zones" class="block py-3 px-4 rounded-xl hover:bg-blue-800 dark:hover:bg-gray-700 transition">Safe Zones</a>
+        <a href="/logout" class="block py-3 px-4 rounded-xl hover:bg-red-600 mt-8 transition">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+      <!-- Navbar -->
+      <header class="bg-white dark:bg-gray-800 shadow-sm p-4 flex justify-between items-center transition">
+        <button onclick="toggleSidebar()" class="md:hidden text-xl dark:text-white">☰</button>
+        <h1 class="text-lg font-semibold text-gray-800 dark:text-white hidden md:block">Dashboard</h1>
+
+        <div class="flex items-center space-x-4">
+          <!-- Notification Bell -->
+          <button class="relative text-gray-600 dark:text-gray-200 hover:scale-110 transition">
+            🔔
+            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">3</span>
+          </button>
+
+          <!-- Dark Mode Toggle -->
+          <button onclick="toggleDarkMode()" class="text-gray-600 dark:text-yellow-400 text-xl transition">🌙</button>
+
+          <!-- Profile -->
+          <div class="relative">
+            <button onclick="toggleDropdown()" class="flex items-center space-x-2">
+              <div class="w-9 h-9 bg-blue-900 text-white rounded-full flex items-center justify-center">
+                <%= user.name.charAt(0).toUpperCase() %>
+              </div>
+              <span class="hidden md:block dark:text-white font-medium"><%= user.name %></span>
+            </button>
+
+            <div id="dropdown" class="hidden absolute right-0 mt-3 w-40 bg-white dark:bg-gray-700 rounded-xl shadow-lg py-2 text-sm">
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white">Profile</a>
+              <a href="/logout" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 text-red-600">Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <main class="p-6">
+        <!-- Hero Section -->
+        <div class="bg-gradient-to-r from-blue-900 to-indigo-800 dark:from-gray-700 dark:to-gray-800 text-white rounded-3xl p-10 mb-10 shadow-xl">
+          <h2 class="text-3xl font-bold mb-3">Welcome back, <%= user.name %> 👋</h2>
+          <p class="opacity-90">Stay safe and explore confidently.</p>
+        </div>
+
+        <!-- Action Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <a href="/tourist/report" class="group bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-md hover:shadow-2xl transition transform hover:-translate-y-2">
+            <div class="text-3xl mb-4 group-hover:scale-110 transition">🚨</div>
+            <h3 class="text-xl font-semibold mb-2 dark:text-white">Report Incident</h3>
+          </a>
+
+          <a href="/tourist/my-reports" class="group bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-md hover:shadow-2xl transition transform hover:-translate-y-2">
+            <div class="text-3xl mb-4 group-hover:scale-110 transition">📄</div>
+            <h3 class="text-xl font-semibold mb-2 dark:text-white">Track Reports</h3>
+          </a>
+
+          <a href="/tourist/safe-zones" class="group bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-md hover:shadow-2xl transition transform hover:-translate-y-2">
+            <div class="text-3xl mb-4 group-hover:scale-110 transition">📍</div>
+            <h3 class="text-xl font-semibold mb-2 dark:text-white">Safe Zones</h3>
+          </a>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('-translate-x-full');
+    }
+
+    function toggleDropdown() {
+      document.getElementById('dropdown').classList.toggle('hidden');
+    }
+
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+    }
+
+    function openPanicModal() {
+      document.getElementById('panicModal').classList.remove('hidden');
+    }
+
+    function closePanicModal() {
+      document.getElementById('panicModal').classList.add('hidden');
+    }
+
+    function triggerPanic() {
+      window.location.href = "/tourist/panic";
+    }
+  </script>
+
+  <!-- 🚨 Panic Button -->
+  <button onclick="openPanicModal()" class="fixed bottom-6 right-6 bg-red-600 hover:bg-red-700 text-white font-bold text-lg px-6 py-4 rounded-full shadow-2xl animate-pulse z-50 transition">
+    🚨 PANIC
+  </button>
+
+  <!-- Panic Confirmation Modal -->
+  <div id="panicModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl w-11/12 max-w-md text-center shadow-2xl">
+      <h2 class="text-2xl font-bold text-red-600 mb-4">Emergency Alert</h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-6">
+        Are you sure you want to trigger an emergency alert? This will notify authorities immediately.
+      </p>
+      <div class="flex justify-center space-x-4">
+        <button onclick="triggerPanic()" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg transition">
+          Yes, Send Alert
+        </button>
+        <button onclick="closePanicModal()" class="bg-gray-300 hover:bg-gray-400 px-6 py-2 rounded-lg transition">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
