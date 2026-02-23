@@ -1,3 +1,72 @@
-<h1>tourist Dashboard</h1>
 
-<p>Welcome <%= user.name %></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tourist Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+
+<div class="flex">
+
+    <!-- Sidebar -->
+    <%- include('./partials/sidebar') %>
+
+    <div class="flex-1 flex flex-col">
+
+        <!-- Navbar -->
+        <%- include('./partials/navbar', { user: user }) %>
+
+        <main class="p-6">
+
+            <!-- Welcome Card -->
+            <div class="bg-white rounded-2xl shadow-md p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-2">
+                    Welcome back, <%= user.name %> 👋
+                </h2>
+
+                <p class="text-gray-600">
+                    Stay safe and explore confidently. Your safety is our priority.
+                </p>
+            </div>
+
+            <!-- Action Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <a href="/tourist/report"
+                   class="bg-blue-950 text-white rounded-2xl p-6 hover:bg-blue-900 transition shadow-md">
+                    <h3 class="text-lg font-semibold mb-2">🚨 Report Incident</h3>
+                    <p class="text-sm opacity-80">
+                        Submit a new safety complaint quickly.
+                    </p>
+                </a>
+
+                <a href="/tourist/my-reports"
+                   class="bg-gray-900 text-white rounded-2xl p-6 hover:bg-gray-800 transition shadow-md">
+                    <h3 class="text-lg font-semibold mb-2">📄 Track My Reports</h3>
+                    <p class="text-sm opacity-80">
+                        Check status of your submitted cases.
+                    </p>
+                </a>
+
+                <a href="/tourist/safe-zones"
+                   class="bg-green-700 text-white rounded-2xl p-6 hover:bg-green-600 transition shadow-md">
+                    <h3 class="text-lg font-semibold mb-2">📍 View Safe Zones</h3>
+                    <p class="text-sm opacity-80">
+                        Explore verified safe travel areas.
+                    </p>
+                </a>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+</body>
+</html>
