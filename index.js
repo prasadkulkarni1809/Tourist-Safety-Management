@@ -21,7 +21,6 @@ const touristRoutes = require('./routes/touristRoutes');
 const authorityRoutes = require('./routes/authorityRoutes');
 
 
-
 // ------------------ MongoDB Connection ------------------
 
 mongoose.connect('mongodb://127.0.0.1:27017/touristSafety')
@@ -80,10 +79,15 @@ app.get('/login', (req, res) => {
 app.get('/register', (req, res) => {
     res.render('register');
 });
-
+app.get('/home', (req, res) => {
+    res.render('home');
+});
 
 // ------------------ Server ------------------
 
-app.listen(3000, () => {
-    console.log('Server running on port 3000');
+const PORT = 3000;
+const HOST = '0.0.0.0'; 
+
+app.listen(PORT, HOST, () => {
+    console.log(`Server is live at http://192.168.1.7:${PORT}`);
 });
